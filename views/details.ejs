@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2, h3, p {
+            color: #333;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Recipe Detail</h2>
+
+    <div>
+        <h3>Name: <%= recipe.name %></h3>
+        <p>Description: <%= recipe.desc %></p>
+        <p>Chef: <%= recipe.chef %></p>
+        <button class="delete" data-doc="<%= recipe._id %>"> Delete </button>
+        <a href="/recipe/edit/<%= recipe._id %>">
+            <button> Edit </button>
+        </a>
+    </div>
+
+</body>
+<script>
+    const trash = document.querySelector('button.delete')
+    trash.addEventListener("click", () => {
+        if (confirm('Are you sure?')){
+            fetch(`/recipe/${trash.dataset.doc}`, { method: 'DELETE' })
+                .then(response => response.json())
+                .then((data) => {
+                    window.location.href = data.redirect;
+                })
+                .catch((err) => console.log(err));
+    }})
+</script>
+</html>

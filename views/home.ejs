@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <a href="/recipe/new"><button>Add Recipe</button></a>
+
+    <h2>Recipe List</h2>
+
+    <!-- Search Bar -->
+    <form action="/search" method="GET">
+        <label>Search:</label>
+        <input type="text" name="query" placeholder="Enter recipe name">
+
+        <button type="submit">Search</button>
+        
+    </form>
+    <a href="/">
+        <button>Reset</button>
+    </a>
+
+
+    <!-- Display Recipes -->
+    <% recipes.forEach(recipe => { %>
+        <a href="/recipe/<%= recipe._id %>"><h3><%= recipe.name %></h3></a>
+    <% }); %>
+
+</body>
+</html>

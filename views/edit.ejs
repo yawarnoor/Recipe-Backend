@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Recipe Form</h2>
+
+    <form action="/recipe/<%= recipe._id %>" method="post">
+        <label>Name:</label><br>
+        <input type="text" name="name" value="<%= recipe.name %>"><br>
+        
+        <label>Chef:</label><br>
+        <input type="text" name="chef" value="<%= recipe.chef %>"><br>
+        
+        <label>Description:</label><br>
+        <textarea name="desc" rows="4" cols="50"><%= recipe.desc %></textarea><br>
+        
+        <button type="submit">Submit Form</button>
+    </form>
+    
+
+        <!-- <label for="file">Select a file:</label>
+        <input type="file" value="<%= recipe.file %>" name="file" accept=".jpg, .jpeg, .png, .gif" required > -->
+
+        
+    </form>
+
+</body>
+</html>
